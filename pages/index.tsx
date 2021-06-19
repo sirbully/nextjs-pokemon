@@ -1,13 +1,12 @@
-import Head from 'next/head'
-import Link from 'next/link'
-
-export default function Home({ allPostsData }) {
+const Home = ({ allPostsData }) => {
   return (
     <div>
       hello
     </div>
   )
 }
+
+export default Home;
 
 export async function getStaticProps() {
   const allPostsData = []
