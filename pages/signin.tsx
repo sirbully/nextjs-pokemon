@@ -40,23 +40,31 @@ const Signin = () => {
               type="email"
               label="Email Address"
               register={register}
-              required
+              validation={{
+                required: 'Email address is required',
+              }}
             />
             {errors['Email Address'] && (
-              <FormError>Email Address is required</FormError>
+              <FormError>{errors['Email Address'].message}</FormError>
             )}
             <Input
               type="password"
               label="Password"
               register={register}
-              required
+              validation={{
+                required: 'Password is required',
+              }}
             />
-            {errors['Password'] && <FormError>Password is required</FormError>}
-            <Button type="submit">Sign in</Button>
+            {errors['Password'] && (
+              <FormError>{errors['Password'].message}</FormError>
+            )}
+            <Button type="submit" color="red">
+              Sign in
+            </Button>
             <p className="text-sm text-center mt-2">
               Don&apos;t have an account yet?{' '}
               <Link href="/signup">
-                <a className="font-bold text-red-300">Sign up here!</a>
+                <a className="font-bold text-red-700">Sign up here!</a>
               </Link>
             </p>
           </form>
