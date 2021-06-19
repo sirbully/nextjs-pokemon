@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# Pokemon Next.js
+
+A little project built with Typescript, Next.js, TailwindCSS and the PokeAPI!
