@@ -100,8 +100,8 @@ const Signup = () => {
                 validate: validatePassword,
               }}
             />
-            {errors['Password'] && (
-              <FormError>{errors.Password.message}</FormError>
+            {errors['Confirm Password'] && (
+              <FormError>{errors['Confirm Password'].message}</FormError>
             )}
             <Button type="submit" color="blue">
               Sign up
