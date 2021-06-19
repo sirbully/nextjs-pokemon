@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
-import { AuthProvider } from '@/hooks/auth-context';
 import '@/styles/global.scss';
 
 const App = ({ Component, pageProps }) => {
@@ -19,9 +18,7 @@ const App = ({ Component, pageProps }) => {
           />
           <title>Pokemon Next!</title>
         </Head>
-        <AuthProvider>
-          <Component {...pageProps} />
-        </AuthProvider>
+        <Component {...pageProps} />
       </Hydrate>
       <ReactQueryDevtools />
     </QueryClientProvider>

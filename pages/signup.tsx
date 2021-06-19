@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useAuth } from '@/hooks/auth-context';
 import Button from '@/components/Button';
 import FormError from '@/components/FormError';
 import Input from '@/components/Input';
@@ -17,7 +15,6 @@ type SignupForm = {
 
 const Signup = () => {
   const router = useRouter();
-  const { state } = useAuth();
   const {
     register,
     handleSubmit,
@@ -25,14 +22,12 @@ const Signup = () => {
     watch,
   } = useForm<SignupForm>();
 
-  useEffect(() => {
-    if (state.isLoggedIn) router.push('/dashboard');
-  }, [state, router]);
+  const onSubmit: SubmitHandler<SignupForm> = () => {
+    router.push('/dashboard');
+  };
 
   const validatePassword = (value: string) =>
     value === watch('Password') || 'Passwords do not match';
-
-  const onSubmit: SubmitHandler<SignupForm> = data => console.log(data);
 
   return (
     <div className="flex flex-wrap justify-center">
@@ -100,8 +95,8 @@ const Signup = () => {
                 validate: validatePassword,
               }}
             />
-            {errors['Password'] && (
-              <FormError>{errors.Password.message}</FormError>
+            {errors['Confirm Password'] && (
+              <FormError>{errors['Confirm Password'].message}</FormError>
             )}
             <Button type="submit" color="blue">
               Sign up

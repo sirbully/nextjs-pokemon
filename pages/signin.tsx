@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useAuth } from '@/hooks/auth-context';
 import Button from '@/components/Button';
 import FormError from '@/components/FormError';
 import Input from '@/components/Input';
@@ -14,18 +12,15 @@ type SigninForm = {
 
 const Signin = () => {
   const router = useRouter();
-  const { state } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SigninForm>();
 
-  useEffect(() => {
-    if (state.isLoggedIn) router.push('/dashboard');
-  }, [state, router]);
-
-  const onSubmit: SubmitHandler<SigninForm> = data => console.log(data);
+  const onSubmit: SubmitHandler<SigninForm> = () => {
+    router.push('/dashboard');
+  };
 
   return (
     <div className="flex flex-wrap justify-center">
