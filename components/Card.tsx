@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Pill from './Pill';
-import { capitalize, padded } from '@/utils/string-util';
+import { capitalize, padded } from '@/utils/string-utils';
 
 type CardProps = {
   id: number;
