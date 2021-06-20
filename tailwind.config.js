@@ -3,7 +3,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     boxShadow: {
-      custom: '0px 4px black'
+      custom: '0px 4px black',
+      'custom-small': '0px 3px black'
     },
     extend: {
       fontFamily: {
