@@ -74,7 +74,7 @@ const Modal: FC<ModalProps> = ({ isVisible, onToggle, pokemon }) => {
         <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <button
-              className="fixed right-6 w-8 h-8 rounded-full border-2 border-black shadow-custom-small focus:outline-none font-bold"
+              className="fixed right-6 w-8 h-8 rounded-full border-2 border-black shadow-custom-small font-bold hover:bg-gray-100 focus:outline-none"
               onClick={() => onToggle(false)}
             >
               x
