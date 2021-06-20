@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/api/*": ["pages/api/*"],
       "@/components/*": ["components/*"],
-      "@/hooks/*": ["hooks/*"],
       "@/styles/*": ["styles/*"]
     },
     "target": "es2017",
