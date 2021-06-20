@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'main/variables';
 
 @layer base {
   @font-face {
