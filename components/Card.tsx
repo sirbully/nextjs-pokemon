@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Pill from './Pill';
-
-const capitalize = (string: string) =>
-  string.charAt(0).toUpperCase() + string.slice(1);
-
-const padded = (number: number) => ('000' + number).slice(-3);
+import { capitalize, padded } from '@/utils/string-util';
 
 type CardProps = {
   id: number;
   name: string;
   image: string;
   types: Array<any>;
+  onClick: (id: number) => void;
 };
 
-const Card: FC<CardProps> = ({ id, name, image, types }) => (
-  <div className="rounded-2xl border-2 border-black shadow-custom p-8 mb-4 flex flex-col justify-center items-center hover:bg-gray-100 cursor-pointer">
+const Card: FC<CardProps> = ({ id, name, image, types, onClick }) => (
+  <div
+    className="rounded-2xl border-2 border-black shadow-custom p-8 mb-4 flex flex-col justify-center items-center hover:bg-gray-100 cursor-pointer"
+    onClick={() => onClick(id)}
+  >
     <div className="relative w-full flex justify-center">
       <p
         className="absolute -top-7 text-gray-300 font-extrabold"
