@@ -1,20 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useQuery } from 'react-query';
 import Card from '@/components/Card';
 import Modal from '@/components/Modal';
-
-const toJSON = (_: Response) => _.json();
-const getPokemon = () =>
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=21').then(toJSON);
+import { useGetPokemon } from '@/hooks/useGetPokemon';
+import { toJSON } from '@/utils/api-utils';
 
 const Dashboard = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [pokemon, setPokemon] = useState([]);
-  const { isLoading } = useQuery(['pokemon'], getPokemon, {
-    onSuccess: async data => {
+  const { data, isLoading } = useGetPokemon();
+
+  useEffect(() => {
+    const updatePokemon = async () => {
       setPokemon(
         await Promise.all(
           data.results.map(
@@ -22,8 +21,10 @@ const Dashboard = () => {
           ),
         ),
       );
-    },
-  });
+    };
+
+    if (data) updatePokemon();
+  }, [data]);
 
   const toggleModal = (id: number) => {
     setIsModalOpen(true);
