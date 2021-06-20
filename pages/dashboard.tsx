@@ -11,7 +11,7 @@ const getPokemon = () =>
 const Dashboard = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [pokemonId, setPokemonId] = useState(0);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [pokemon, setPokemon] = useState([]);
   const { isLoading } = useQuery(['pokemon'], getPokemon, {
     onSuccess: async data => {
@@ -27,6 +27,7 @@ const Dashboard = () => {
 
   const toggleModal = (id: number) => {
     setIsModalOpen(true);
+    setSelectedPokemon(pokemon.find(poke => poke.id === id));
   };
 
   const pokedex = pokemon.map(poke => (
@@ -36,6 +37,7 @@ const Dashboard = () => {
       name={poke.name}
       image={poke.sprites.front_default}
       types={poke.types}
+      onClick={toggleModal}
     />
   ));
 
@@ -58,8 +60,7 @@ const Dashboard = () => {
       <Modal
         isVisible={isModalOpen}
         onToggle={setIsModalOpen}
-        pokemon={pokemon}
-        pokemonId={pokemonId}
+        pokemon={selectedPokemon}
       />
     </>
   );
